@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int function(TreeNode*root,int &maxi){
+        if(root==nullptr){
+            return 0;
+        }
+        int x=function(root->left,maxi);
+        int y=function(root->right,maxi);
+         maxi=max(maxi,x+y);
+         return 1+max(x,y);
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(!root){
+            return 0;
+        }
+        int maxi=INT_MIN;
+        function(root,maxi);
+        return maxi;
+        
+    }
+};
